@@ -1,0 +1,143 @@
+    .clickable {
+        cursor: pointer;
+    }
+
+  #reveal-div {
+    cursor: pointer;
+  }
+
+  #laughing-head {
+    cursor: pointer;
+  }
+
+  #joke-header-container {
+      min-height: 100px;
+  }
+
+  .lds-grid {
+    position: fixed;
+    z-index: 999;
+    /* left: 0px;
+    top: 0px; */
+    width: 64px;
+    height: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 60px;
+  }
+  .lds-grid div {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation: lds-grid 1.2s linear infinite;
+  }
+  .lds-grid div:nth-child(1) {
+    top: 6px;
+    left: 6px;
+    animation-delay: 0s;
+  }
+  .lds-grid div:nth-child(2) {
+    top: 6px;
+    left: 26px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(3) {
+    top: 6px;
+    left: 45px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(4) {
+    top: 26px;
+    left: 6px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(5) {
+    top: 26px;
+    left: 26px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(6) {
+    top: 26px;
+    left: 45px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(7) {
+    top: 45px;
+    left: 6px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(8) {
+    top: 45px;
+    left: 26px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(9) {
+    top: 45px;
+    left: 45px;
+    animation-delay: -1.6s;
+  }
+  @keyframes lds-grid {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+
+
+.speech-bubble-left {
+    position: relative;
+    background: #bfbfbf;
+    border-radius: .4em;
+    padding: 20px;
+  }
+
+  .speech-bubble-left:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 48px solid transparent;
+    border-left-color: #bfbfbf;
+    border-right: 0;
+    border-bottom: 0;
+    margin-top: -24px;
+    margin-right: -48px;
+  }  
+
+  .speech-bubble-right {
+    position: relative;
+    background: #bfbfbf;
+    border-radius: .4em;
+    padding: 20px;
+  }
+
+  .speech-bubble-right:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 48px solid transparent;
+    border-right-color: #bfbfbf;
+    border-left: 0;
+    border-top: 0;
+    margin-top: -24px;
+    margin-left: -48px;
+  }
+
+  .punchline {
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    cursor: pointer;
+  }
