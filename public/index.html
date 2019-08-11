@@ -38,7 +38,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Best/Worst/Jokes</a>
+      <a class="navbar-brand js-scroll-trigger" href="https://bestworstjokes.com">BestWorstJokes.com</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -51,12 +51,12 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
           </li>
-          <!--li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Submit</a>
-          </li-->
-          <li class="nav-item mx-0 mx-lg-1" data-toggle="modal" data-target="#signInModal">
+          <li class="nav-item mx-0 mx-lg-1" data-toggle="modal" data-target="#roadmapModal">
+            <a id="roadmapButton" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Roadmap</a>
+          </li>
+          <!-- <li class="nav-item mx-0 mx-lg-1" data-toggle="modal" data-target="#signInModal">
             <a id="signInButton" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">Sign in / Register</a>
-          </li>          
+          </li>           -->
         </ul>
       </div>
     </div>
@@ -119,7 +119,7 @@
 
         <!-- Portfolio Item 1 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+          <div class="portfolio-item mx-auto" onclick="window.location.href = window.location.origin + '?subject=general';">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <i class="fas fa-plus fa-3x"></i>
@@ -145,7 +145,7 @@
 
         <!-- Portfolio Item 3 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
+          <div class="portfolio-item mx-auto" onclick="window.location.href = window.location.origin + '?subject=jobs';">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <i class="fas fa-plus fa-3x"></i>
@@ -158,7 +158,7 @@
 
         <!-- Portfolio Item 4 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+          <div class="portfolio-item mx-auto" onclick="window.location.href = window.location.origin + '?subject=numbers';">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <i class="fas fa-plus fa-3x"></i>
@@ -171,7 +171,7 @@
 
         <!-- Portfolio Item 5 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
+          <div class="portfolio-item mx-auto" onclick="window.location.href = window.location.origin + '?subject=transportation';">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <i class="fas fa-plus fa-3x"></i>
@@ -184,7 +184,7 @@
 
         <!-- Portfolio Item 6 -->
         <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
+          <div class="portfolio-item mx-auto" onclick="window.location.href = window.location.origin + '?subject=food';">
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
               <div class="portfolio-item-caption-content text-center text-white">
                 <i class="fas fa-plus fa-3x"></i>
@@ -228,12 +228,12 @@
       </div>
 
       <!-- About Section Button -->
-      <div class="text-center mt-4">
+      <!-- <div class="text-center mt-4">
         <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/themes/freelancer/">
           <i class="fas fa-download mr-2"></i>
           Free Download!
         </a>
-      </div>
+      </div> -->
 
     </div>
   </section>
@@ -347,9 +347,63 @@
     </a>
   </div>
 
-
-
   <!-- Modals -->
+
+  <!-- Roadmap modal -->
+  <div class="portfolio-modal modal fade" id="roadmapModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body">
+          <h2>Roadmap</h2>
+          <h4>This is our Roadmap for the coming months, subscribe below to get updates on our progress.</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">ETA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-success">
+                <th scope="row">1</th>
+                <td>Screensaver page: a page will be available which will just stream jokes in a visually pleasing manner, can be used as a nice way to fill a screen with funny content.</td>
+                <td>October 2019</td>
+              </tr>              
+              <tr class="table-success">
+                <th scope="row">2</th>
+                <td>User registration: users will be able to register, and thereby add content to the site.</td>
+                <td>November 2019</td>
+              </tr>
+              <tr class="table-warning">
+                <th scope="row">3</th>
+                <td>Registered users will be able to comment and submit alternative punchlines to the jokes.</td>
+                <td>November 2019</td>
+              </tr>
+              <tr class="table-warning">
+                <th scope="row">4</th>
+                <td>Registered users will be able to submit new jokes.</td>
+                <td>November 2019</td>
+              </tr>
+            </tbody>
+          </table>
+          <form>
+          <div class="form-group" style="max-width: 75%;">
+            <label for="exampleInputEmail1"></label>Signup to get updates when new features are delivered!</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>          
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Sign in modal -->
   <div class="portfolio-modal modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
@@ -409,240 +463,6 @@
     </div>
   </div>
 
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 2 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/cake.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 3 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/circus.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 4 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/game.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 5 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/safe.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 6 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body text-center">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
-                <!-- Icon Divider -->
-                <div class="divider-custom">
-                  <div class="divider-custom-line"></div>
-                  <div class="divider-custom-icon">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="img/portfolio/submarine.png" alt="">
-                <!-- Portfolio Modal - Text -->
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                <button class="btn btn-primary" href="#" data-dismiss="modal">
-                  <i class="fas fa-times fa-fw"></i>
-                  Close Window
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -687,11 +507,10 @@
         var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has("subject")) {
           subject = urlParams.get("subject");
-          $("#header-text").text("֍ " + subject.charAt(0).toUpperCase() + subject.slice(1) + " Jokes ֎");    
         }
-        else {
-          $("#header-text").text("֍ Random Jokes ֎");
-        }
+
+        setHeader(undefined);
+
         var db = firebase.firestore();
         var docRef = db.collection("metadata").doc(subject);
 
@@ -708,6 +527,21 @@
         //document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
       }
     });
+
+    function setHeader(jokeId) {
+
+      var idText = "";
+      if (jokeId) {
+        idText = " #" + jokeId;
+      }
+
+      if (subject != "all") {
+        $("#header-text").text("֍ " + subject.charAt(0).toUpperCase() + subject.slice(1) + " Joke " + idText + " ֎");    
+      }
+      else {
+        $("#header-text").text("֍ Random Joke " + idText + " ֎");
+      }      
+    }
 
     function register() {
       firebase.auth().createUserWithEmailAndPassword($("#register-email").val(), $("#register-pw").val()).catch(function(error) {
@@ -753,31 +587,44 @@
       var randomJokeRef = firebase.firestore().collection("jokes").doc(randomId.toString());
       
       randomJokeRef.get().then(function(joke) {
-        var elements = "";
-        for (var i in joke.data().Fields) {
-          var field = joke.data().Fields[i];
+        setHeader(randomId);
 
-          var pclass = "";
-          if (field.Punchline == true) pclass = " punchline' title='Press to reveal..";
+        setJoke(joke.data());
+      }).catch(function(error) {
+        console.error("Error getting document:", error);
 
-          if (field.Position == "left")
-            elements += "<div class='row'><div onclick='punchlineClick(this);' class='col-md" + pclass + "' style='padding: 30px;'><div class='speech-bubble-" + field.Position + "'>" + field.Text + "</div></div><div class='col-md'></div></div>";
-          else if (field.Position == "right")
-            elements += "<div class='row'><div class='col-md'></div><div onclick='punchlineClick(this);' class='col-md" + pclass + "' style='padding: 30px;'><div class='speech-bubble-" + field.Position + "'>" + field.Text + "</div></div></div>";
-        
-          if (field.Punchline == true)
-            elements += "<span id='reveal-div' onclick='punchlineClick();' class='badge badge-secondary'>Press to reveal..</span>";
-        }
-
-        document.getElementById('joke-header-container').innerHTML = elements;
-        $("#laughing-head").removeClass("animated tada");
-
-        // $(".lds-grid").fadeOut();
-        setTimeout(function() {
-          $("#header-text").removeClass("animated bounce");
-        }, 1000);
-        $("#joke-header").fadeIn();
+        $.get("./testdata/joke1.json", function(data) {
+          setJoke(data);
+        });
       });
+    }
+
+    function setJoke(joke) {
+      var elements = "";
+
+      for (var i in joke.Fields) {
+        var field = joke.Fields[i];
+
+        var pclass = "";
+        if (field.Punchline == true) pclass = " punchline' title='Press to reveal..";
+
+        if (field.Position == "left")
+          elements += "<div class='row'><div onclick='punchlineClick(this);' class='col-md" + pclass + "' style='padding: 30px;'><div class='speech-bubble-" + field.Position + "'>" + field.Text + "</div></div><div class='col-md'></div></div>";
+        else if (field.Position == "right")
+          elements += "<div class='row'><div class='col-md'></div><div onclick='punchlineClick(this);' class='col-md" + pclass + "' style='padding: 30px;'><div class='speech-bubble-" + field.Position + "'>" + field.Text + "</div></div></div>";
+
+        if (field.Punchline == true)
+          elements += "<span id='reveal-div' onclick='punchlineClick();' class='badge badge-secondary'>Press to reveal..</span>";
+      }
+
+      document.getElementById('joke-header-container').innerHTML = elements;
+      $("#laughing-head").removeClass("animated tada");
+
+      // $(".lds-grid").fadeOut();
+      setTimeout(function() {
+        $("#header-text").removeClass("animated bounce");
+      }, 1000);
+      $("#joke-header").fadeIn();      
     }
 
   </script>
