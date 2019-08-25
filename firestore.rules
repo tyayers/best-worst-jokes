@@ -2,8 +2,30 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read: if true;
+      allow read: if false;
       allow write: if false;
     }
+    
+    match /jokes/{joke} {
+      allow read: if true;
+      allow write: if false;
+    }    
+    
+    match /metadata/{joke} {
+      allow read: if true;
+      allow write: if false;
+    }      
+    
+    match /submissions/{joke} {
+      allow read: if false;
+      allow write: if request.auth.uid != null;
+    }        
   }
+
+  match /databases/{database}/users {
+    match /users/{userId} {
+      allow read, update: if request.auth.uid == userId;
+      allow create: if request.auth.uid != null;
+    }
+  }  
 }
