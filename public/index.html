@@ -30,6 +30,7 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Theme CSS -->
   <link href="css/freelancer.css" rel="stylesheet">
@@ -91,6 +92,8 @@
 
         </h1>
 
+        <joke-userinfo v-bind:joke="usercontent" v-bind:jokeid="jokeid" v-bind:userid="user.uid" v-if="user && user.emailVerified && punchlineVisible"></joke-userinfo>
+
         <!-- Icon Divider -->
         <div class="divider-custom divider-light">
           <div class="divider-custom-line"></div>
@@ -102,7 +105,7 @@
 
         <!-- Masthead Avatar Image -->
         <img id="laughing-head" onclick="loadRandomJoke();" class="masthead-avatar mb-5" src="img/avataaars.svg" alt="" title="Click to load next joke">
-        <h1 id="new-button" style="display: none;" class="masthead-heading mb-3"><span onclick='loadRandomJoke();'  title="Click to load next joke" class='clickable badge badge-secondary'>Gimmie another..</span></h1>
+        <h1 id="new-button" style="display: none;" class="masthead-heading mb-3"><span onclick='loadRandomJoke();'  title="Click to load next joke" class='clickable badge badge-secondary'>Load another joke</span></h1>
       </div>
     </header>
 
@@ -264,7 +267,7 @@
 
         <!-- Contact Section Form -->
         <div class="row">
-          <div v-if="user" class="col-lg-8 mx-auto">
+          <div v-if="user && user.emailVerified" class="col-lg-8 mx-auto">
             <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
             <form name="submitJoke" id="joke-form" novalidate="novalidate">
               <div class="control-group">
@@ -422,6 +425,7 @@
   <script src="js/freelancer.min.js"></script>
 
   <script src="js/script.js"></script>
+  <script src="js/vue/joke-userinfo.js"></script>
 
   <script>
 

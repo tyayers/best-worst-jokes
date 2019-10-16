@@ -11,6 +11,16 @@ service cloud.firestore {
       allow write: if false;
     }    
     
+    match /usercontent/{joke} {
+      allow read: if true;
+      allow write: if request.auth.uid != null;
+    }
+    
+    match /usercontent/{joke}/UserPunchlines/{userpunchline} {
+      allow read: if true;
+      allow write: if request.auth.uid != null;
+    }    
+    
     match /metadata/{joke} {
       allow read: if true;
       allow write: if false;

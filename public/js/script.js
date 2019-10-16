@@ -1,12 +1,15 @@
 var vueApp = new Vue({
   el: '#page-top',
   data: {
-    message: 'Hello Vue!',
+    punchlineVisible: false,
+    subject: "all",
+    joke: null,
+    jokeid: "",
+    usercontent: null,
     user: null
   }
 })
 
-var subject = "all";
 var metadata = undefined;
 var count = 0;
 
@@ -28,13 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
     firebase.auth().onAuthStateChanged(function(user) {
       window.user = user; // user is undefined if no user signed in
       vueApp.user = user;
-      if (user) {
+      if (user && user.emailVerified) {
 
         $("#signInContainer").hide();
         $("#signOutContainer").show();
       }
+      else if (user && !user.emailVerified) {
+        user.sendEmailVerification().then(function() {
+          alert("Please verify your email by clicking the link in the email you received.  You didn't get an email?  Then resend here, and check your spam folder.");
+        }).catch(function(error) {
+          alert("Unfortuantely an error occurred, please contact support.");
+        });        
+      }
       else {
-
         $("#signOutContainer").hide();
         $("#signInContainer").show();            
       }
@@ -42,13 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("subject")) {
-      subject = urlParams.get("subject");
+      vueApp.subject = urlParams.get("subject");
+    }
+
+    if (urlParams.has("jokeid")) {
+      vueApp.jokeid = urlParams.get("jokeid");
     }
 
     setHeader(undefined);
 
     var db = firebase.firestore();
-    var docRef = db.collection("metadata").doc(subject);
+    var docRef = db.collection("metadata").doc(vueApp.subject);
 
     docRef.get().then(function(doc) {
       if (doc.exists) {
@@ -60,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
   } catch (e) {
     console.error(e);
-    //document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
   }
 });
 
@@ -71,8 +83,8 @@ function setHeader(jokeId) {
     idText = " #" + jokeId;
   }
 
-  if (subject != "all") {
-    $("#header-text").text("֍ " + subject.charAt(0).toUpperCase() + subject.slice(1) + " Joke " + idText + " ֎");    
+  if (vueApp.subject != "all") {
+    $("#header-text").text("֍ " + vueApp.subject.charAt(0).toUpperCase() + vueApp.subject.slice(1) + " Joke " + idText + " ֎");    
   }
   else {
     $("#header-text").text("֍ Random Joke " + idText + " ֎");
@@ -99,8 +111,6 @@ function sendJoke() {
 }
 
 function register() {
-  var email = $("#register-email").val();
-  var pw = $("#register-pw").val();
   firebase.auth().createUserWithEmailAndPassword($("#register-email").val(), $("#register-pw").val()).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -140,6 +150,7 @@ function punchlineClick(e) {
   $("#reveal-div").remove();
   $("#laughing-head").addClass("animated tada");
   $("#new-button").show();
+  vueApp.punchlineVisible = true;
 }
 
 function loadRandomJoke() {
@@ -156,11 +167,11 @@ function loadRandomJoke() {
     randomId = metadata.Docs[randomId];
   }
 
-  var randomJokeRef = firebase.firestore().collection("jokes").doc(randomId.toString());
+  vueApp.jokeid = randomId.toString();
+  var randomJokeRef = firebase.firestore().collection("jokes").doc(vueApp.jokeid);
   
   randomJokeRef.get().then(function(joke) {
     setHeader(randomId);
-
     setJoke(joke.data());
   }).catch(function(error) {
     console.error("Error getting document:", error);
@@ -169,6 +180,33 @@ function loadRandomJoke() {
       setJoke(data);
     });
   });
+
+  // Now set usercontent
+  var userContentRef = firebase.firestore().collection("usercontent").doc(vueApp.jokeid);
+  
+  userContentRef.get().then(function(userContent) {
+    if (userContent.exists) {
+      vueApp.usercontent = userContent.data();
+    }
+    else {
+      vueApp.usercontent = {
+        Smiles: 0,
+        UserPunchlines: {}
+      };
+  
+      // Add a new document in collection "usercontent"
+      firebase.firestore().collection("usercontent").doc(vueApp.jokeid).set(vueApp.usercontent)
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });    
+    }
+  }).catch(function(error) {
+
+  });
+
 }
 
 function setJoke(joke) {
@@ -191,6 +229,11 @@ function setJoke(joke) {
 
   document.getElementById('joke-header-container').innerHTML = elements;
   $("#laughing-head").removeClass("animated tada");
+
+  if (joke.Stars == undefined) joke.Stars = 0;
+
+  vueApp.joke = joke;
+  vueApp.punchlineVisible = false;
 
   // $(".lds-grid").fadeOut();
   setTimeout(function() {
