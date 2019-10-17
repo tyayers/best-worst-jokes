@@ -49,21 +49,35 @@ Vue.component('joke-userinfo', {
             this.$forceUpdate();          
         }
     },
-    template: ` <div>
-                    <div v-on:click="addSmile()"> 
-                        <i class="material-icons" style="font-size: 48px; cursor: pointer; user-select: none;">insert_emoticon</i>
-                        <span style="position: relative; bottom: 19px;">{{joke.Smiles}} Smiles </span>
-                    </div>
-                    <div v-for="(punchline, id) in joke.UserPunchlines">
-                        <div>{{punchline.Punchline}}</div>
-                        <div v-on:click="addPunchlineSmile(id)">
-                            <i class="material-icons" style="font-size: 34px; cursor: pointer; user-select: none;">insert_emoticon</i>
-                            <span style="position: relative; bottom: 13px;">{{punchline.Smiles}} Smiles </span>
+    template: ` <div class="container">
+                    <div class="row">
+                        <div v-on:click="addSmile()" class="col-12">
+                            <i class="material-icons" style="font-size: 48px; cursor: pointer; user-select: none;">insert_emoticon</i>
+                            <span style="position: relative; bottom: 19px;">{{joke.Smiles}} Smiles </span>
                         </div>
-                    </div> 
-                    <div>
-                        <textarea id="punchlinetext"></textarea>
-                        <button id="submitpunchline" v-on:click="addPunchline()">Submit</button>
+                        <div class="col-12">
+                            <h3 onclick="$('#user-punchlines').toggle()" style="cursor: pointer;">☟ User Submitted Punchlines ☟</h3>
+                            <div id="user-punchlines" style="display: none" class="row">
+                                <div v-for="(punchline, id) in joke.UserPunchlines" class="col-4">
+                                    <div class="row">
+                                        <div class="col-auto" v-on:click="addPunchlineSmile(id)" style="text-align: left">
+                                            <i class="material-icons" style="font-size: 34px; cursor: pointer; user-select: none;">insert_emoticon</i>
+                                            <span style="position: relative; bottom: 13px;">{{punchline.Smiles}} </span>
+                                        </div>
+                                        <div class="col" style="text-align: left; position: relative; top: 3px;">{{punchline.Punchline}}</div>
+                                    </div>
+                                </div>   
+                                <div class="col-12">
+                                    <h5>Add Your Punchline:</h5>
+                                    <textarea id="punchlinetext"></textarea><br>
+                                    <button id="submitpunchline" class="btn btn-primary" v-on:click="addPunchline()">Submit</button>
+                                </div> 
+                            </div>                                                     
+                        </div>
+
+                    </div>
+                    <div class="row">
+
                     </div>
                 </div>`
   })
