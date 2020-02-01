@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
       vueApp.jokeid = urlParams.get("jokeid");
     }
 
-    setHeader(undefined);
+    setHeader(vueApp.jokeid);
 
     var db = firebase.firestore();
     var docRef = db.collection("metadata").doc(vueApp.subject);
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     docRef.get().then(function(doc) {
       if (doc.exists) {
         metadata = doc.data();
-        loadRandomJoke();
+        loadJoke();
       }
     });
 
@@ -153,25 +153,27 @@ function punchlineClick(e) {
   vueApp.punchlineVisible = true;
 }
 
-function loadRandomJoke() {
+function loadJoke() {
   $("#joke-header").hide();
   window.scrollTo(0,0);
   $("#header-text").addClass("animated bounce");
 
-  var count = metadata.Count;
-  var random = Math.floor(Math.random() * count) + 1;
-        
-  var randomId = random.toString();
-  if (metadata.Docs != undefined) {
-    randomId--;
-    randomId = metadata.Docs[randomId];
+  if(!vueApp.jokeid) {
+    var count = metadata.Count;
+    var random = Math.floor(Math.random() * count) + 1;
+    var randomId = random.toString();
+    if (metadata.Docs != undefined) {
+      randomId--;
+      randomId = metadata.Docs[randomId];
+    }
+
+    vueApp.jokeid = randomId.toString();
   }
 
-  vueApp.jokeid = randomId.toString();
-  var randomJokeRef = firebase.firestore().collection("jokes").doc(vueApp.jokeid);
+  var jokeRef = firebase.firestore().collection("jokes").doc(vueApp.jokeid);
   
-  randomJokeRef.get().then(function(joke) {
-    setHeader(randomId);
+  jokeRef.get().then(function(joke) {
+    setHeader(vueApp.jokeid);
     setJoke(joke.data());
   }).catch(function(error) {
     console.error("Error getting document:", error);
